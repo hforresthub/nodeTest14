@@ -5,6 +5,14 @@ door.addListener('slam', (arg1, arg2, arg3) => {
 	console.log('slammed ', arg1, arg2, arg3)
 })
 
+door.prependListener('slam', (arg1, arg2, arg3) => {
+	console.log('slammed first ', arg1, arg2, arg3)
+})
+
+door.prependOnceListener('slam', (arg1, arg2, arg3) => {
+	console.log('slammed first first but only once once ', arg1, arg2, arg3)
+})
+
 door.once('bang', (arg1, arg2, arg3) => {
 	console.log('bang bang ', arg1, arg2, arg3)
 })
@@ -42,3 +50,13 @@ console.log("total num pow listeners: ", door.listenerCount('pow'))
 door.emit('bang')
 door.emit('bang')
 door.emit('bang')
+
+// testing remove all
+
+door.removeAllListeners('slam')
+
+door.emit('slam')
+door.emit('slam')
+door.emit('slam')
+door.emit('slam')
+door.emit('slam')
